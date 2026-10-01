@@ -1,0 +1,88 @@
+<header class="wb-header">
+  <h1>Engagement UI kit — workbench</h1>
+  <p class="wb-lede">
+    A consumer of the kit in <code>src/lib</code>. Build, demonstrate and review components here.
+  </p>
+  <button type="button" class="wb-theme-toggle" (click)="toggleTheme()">
+    {{ darkTheme() ? 'Switch to light theme' : 'Switch to dark theme' }}
+  </button>
+</header>
+
+<main class="wb-main">
+  <section class="wb-section">
+    <h2>Status badge</h2>
+    <p class="wb-note">The supplied component, in the states the engagement list needs.</p>
+
+    <div class="wb-specimens">
+      <cw-status-badge label="Ready" status="ready"></cw-status-badge>
+      <cw-status-badge
+        label="Processing"
+        status="processing"
+        tooltip="The server is still preparing this engagement"
+      ></cw-status-badge>
+      <cw-status-badge label="Error" status="error"></cw-status-badge>
+      <cw-status-badge label="Ready" status="ready" size="sm"></cw-status-badge>
+      <cw-status-badge label="Ready" status="ready" size="lg"></cw-status-badge>
+    </div>
+  </section>
+
+  <section class="wb-section">
+    <h2>Engagement list</h2>
+    <p class="wb-note">The kit in use: a list that has to communicate each engagement's state.</p>
+
+    <ul class="engagement-list">
+      @for (engagement of engagements; track engagement.id) {
+        <li class="engagement-row">
+          <span class="engagement-identity">
+            <span class="engagement-name">{{ engagement.name }}</span>
+            <span class="engagement-client">{{ engagement.clientName }}</span>
+          </span>
+
+          <span class="engagement-pending"> {{ engagement.pendingChangeCount }} pending </span>
+
+          <cw-status-badge
+            [label]="engagement.status"
+            [status]="badgeStatus[engagement.status]"
+          ></cw-status-badge>
+        </li>
+      }
+    </ul>
+  </section>
+
+  <section class="wb-section">
+    <h2>Review filters</h2>
+    <p class="wb-note">
+      Choose a reviewer. Arrow keys explore, Enter confirms, Escape cancels, and Tab confirms and
+      moves to the next control.
+    </p>
+
+    <div class="wb-filter">
+      <cw-single-select
+        label="Reviewer"
+        [options]="reviewerOptions"
+        [formControl]="reviewerId"
+        placeholder="Select a reviewer"
+      />
+      <p class="wb-note">
+        {{ reviewers.length }} reviewers and {{ changeGroups.length }} change groups are available
+        in <code>src/app/data/engagement-fixtures.ts</code>.
+      </p>
+    </div>
+
+    <div class="wb-actions">
+      <button type="button" (click)="reviewerId.reset()">Reset reviewer</button>
+      <button type="button" (click)="toggleReviewerDisabled()">
+        {{ reviewerId.disabled ? 'Enable reviewer picker' : 'Disable reviewer picker' }}
+      </button>
+    </div>
+
+    <dl class="wb-state">
+      <dt>value</dt>
+      <dd>{{ reviewerId.value ?? '—' }}</dd>
+      <dt>touched</dt>
+      <dd>{{ reviewerId.touched }}</dd>
+      <dt>dirty</dt>
+      <dd>{{ reviewerId.dirty }}</dd>
+    </dl>
+  </section>
+</main>

@@ -1,0 +1,99 @@
+:host {
+  color: var(--cw-select-text, inherit);
+  display: block;
+  font: inherit;
+  position: relative;
+}
+
+.select-label {
+  display: block;
+  font-weight: var(--cw-select-label-weight, 600);
+  margin-block-end: var(--cw-select-label-gap, 0.5em);
+}
+
+.select-trigger {
+  align-items: center;
+  background: var(--cw-select-surface, Canvas);
+  border: 1px solid var(--cw-select-border, ButtonBorder);
+  border-radius: var(--cw-select-radius, 0.25em);
+  color: var(--cw-select-text, CanvasText);
+  cursor: pointer;
+  display: flex;
+  font: inherit;
+  gap: var(--cw-select-gap, 0.75em);
+  min-block-size: var(--cw-select-control-height, 2.75em);
+  padding: var(--cw-select-padding, 0.625em 0.75em);
+  text-align: start;
+  width: 100%;
+}
+
+.select-trigger:focus-visible {
+  outline: 2px solid var(--cw-select-focus, Highlight);
+  outline-offset: 2px;
+}
+
+.select-trigger:disabled {
+  color: var(--cw-select-disabled-text, GrayText);
+  cursor: not-allowed;
+}
+
+.select-trigger[aria-invalid='true'] {
+  border-style: dashed;
+}
+
+.select-chevron {
+  margin-inline-start: auto;
+}
+
+.select-list {
+  background: var(--cw-select-surface, Canvas);
+  border: 1px solid var(--cw-select-border, ButtonBorder);
+  border-radius: var(--cw-select-radius, 0.25em);
+  box-sizing: border-box;
+  color: var(--cw-select-text, CanvasText);
+  inset-inline: 0;
+  list-style: none;
+  margin-block: var(--cw-select-popup-gap, 0.25em) 0;
+  max-block-size: var(--cw-select-popup-max-height, 16rem);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: var(--cw-select-list-padding, 0.25em);
+  position: absolute;
+  z-index: 1;
+}
+
+.select-option {
+  align-items: center;
+  cursor: pointer;
+  display: flex;
+  gap: var(--cw-select-gap, 0.75em);
+  min-block-size: 1.5em;
+  overflow-wrap: anywhere;
+  padding: var(--cw-select-padding, 0.625em 0.75em);
+  &:hover {
+    outline: 2px solid var(--cw-select-focus, Highlight);
+  }
+}
+
+.select-option[aria-selected='true'] {
+  font-weight: var(--cw-select-selected-weight, 600);
+}
+
+.select-option.is-active {
+  background: var(--cw-select-active-surface, Highlight);
+  color: var(--cw-select-active-text, HighlightText);
+  outline: 1px solid currentColor;
+  outline-offset: -2px;
+}
+
+.select-option[aria-disabled='true'] {
+  cursor: not-allowed;
+}
+
+.select-unavailable {
+  font-size: var(--cw-select-secondary-size, 0.875em);
+}
+
+.select-feedback {
+  margin-block: var(--cw-select-label-gap, 0.5em) 0;
+}

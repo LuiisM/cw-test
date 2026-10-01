@@ -1,0 +1,67 @@
+/* Light is the default. Set data-theme="dark" on <html> to switch at runtime. */
+:root {
+  color-scheme: light;
+
+  /* Shared color roles */
+  --cw-color-surface: var(--cw-gray-0);
+  --cw-color-surface-subtle: var(--cw-gray-50);
+  --cw-color-text: var(--cw-gray-900);
+  --cw-color-text-muted: var(--cw-gray-600);
+  --cw-color-border: var(--cw-gray-200);
+  --cw-color-control-border: var(--cw-gray-500);
+  --cw-color-focus: var(--cw-blue-600);
+  --cw-color-active-surface: var(--cw-blue-600);
+  --cw-color-active-text: var(--cw-gray-0);
+  --cw-color-success: var(--cw-green-600);
+  --cw-color-warning: var(--cw-amber-700);
+  --cw-color-danger: var(--cw-red-600);
+  --cw-font-body: var(--cw-font-sans);
+
+  /* Existing selector hooks */
+  --cw-select-text: var(--cw-color-text);
+  --cw-select-surface: var(--cw-color-surface);
+  --cw-select-border: var(--cw-color-control-border);
+  --cw-select-focus: var(--cw-color-focus);
+  --cw-select-active-surface: var(--cw-color-active-surface);
+  --cw-select-active-text: var(--cw-color-active-text);
+  --cw-select-disabled-text: var(--cw-color-text-muted);
+  --cw-select-label-weight: var(--cw-font-weight-semibold);
+  --cw-select-selected-weight: var(--cw-font-weight-semibold);
+  --cw-select-secondary-size: var(--cw-font-size-sm);
+  --cw-select-label-gap: var(--cw-space-2);
+  --cw-select-gap: var(--cw-space-3);
+  --cw-select-radius: var(--cw-radius-sm);
+  --cw-select-control-height: var(--cw-space-7);
+  --cw-select-padding: var(--cw-space-2) var(--cw-space-3);
+  --cw-select-popup-gap: var(--cw-space-1);
+  --cw-select-list-padding: var(--cw-space-1);
+  --cw-select-popup-max-height: var(--cw-size-64);
+
+  /* Badge sizing and type */
+  --cw-badge-radius: var(--cw-radius-lg);
+  --cw-badge-font-size: var(--cw-font-size-sm);
+  --cw-badge-font-size-small: var(--cw-font-size-xs);
+  --cw-badge-font-size-large: var(--cw-font-size-md);
+  --cw-badge-gap: calc(var(--cw-space-3) / 2);
+  --cw-badge-padding: calc(var(--cw-space-1) / 2) var(--cw-space-2);
+  --cw-badge-padding-small: calc(var(--cw-space-1) / 4) calc(var(--cw-space-3) / 2);
+  --cw-badge-padding-large: var(--cw-space-1) var(--cw-space-3);
+  --cw-badge-dot-size: var(--cw-space-2);
+  --cw-badge-inline-offset: var(--cw-space-1);
+}
+
+:root[data-theme='dark'] {
+  color-scheme: dark;
+  --cw-color-surface: var(--cw-gray-900);
+  --cw-color-surface-subtle: var(--cw-gray-800);
+  --cw-color-text: var(--cw-gray-50);
+  --cw-color-text-muted: var(--cw-gray-300);
+  --cw-color-border: var(--cw-gray-700);
+  --cw-color-control-border: var(--cw-gray-400);
+  --cw-color-focus: var(--cw-blue-200);
+  --cw-color-active-surface: var(--cw-blue-200);
+  --cw-color-active-text: var(--cw-gray-900);
+  --cw-color-success: var(--cw-green-100);
+  --cw-color-warning: var(--cw-amber-100);
+  --cw-color-danger: var(--cw-red-100);
+}

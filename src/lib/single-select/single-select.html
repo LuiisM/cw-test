@@ -1,0 +1,61 @@
+<label class="select-label" [id]="id + '-label'" [for]="id">{{ label() }}</label>
+<button
+  type="button"
+  class="select-trigger"
+  [id]="id"
+  role="combobox"
+  aria-haspopup="listbox"
+  [attr.aria-labelledby]="id + '-label'"
+  [attr.aria-expanded]="expanded()"
+  [attr.aria-controls]="expanded() ? id + '-listbox' : null"
+  [attr.aria-activedescendant]="activeId()"
+  [attr.aria-disabled]="disabled()"
+  [attr.aria-invalid]="!disabled() && unmatched()"
+  [attr.aria-describedby]="unmatched() ? id + '-feedback' : null"
+  [disabled]="disabled()"
+  (click)="toggle($event)"
+  (keydown)="onKeydown($event)"
+  (blur)="onBlur()"
+>
+  <span>{{ displayText() }}</span>
+  @if (selection()?.disabled) {
+    <span class="select-unavailable">{{ unavailableText() }}</span>
+  }
+  <span class="select-chevron" aria-hidden="true">▾</span>
+</button>
+@if (expanded()) {
+  <ul
+    class="select-list"
+    [id]="id + '-listbox'"
+    role="listbox"
+    tabindex="-1"
+    [attr.aria-labelledby]="id + '-label'"
+  >
+    @for (option of options(); track option.value) {
+      <li
+        #optionElement
+        class="select-option"
+        role="option"
+        [id]="optionId(option.value)"
+        [class.is-active]="option.value === activeValue()"
+        [attr.aria-selected]="option.value === value()"
+        [attr.aria-disabled]="option.disabled"
+        (pointerdown)="retainFocus($event)"
+        (click)="selectOption(option)"
+      >
+        <span>{{ option.label }}</span>
+        @if (option.disabled) {
+          <span class="select-unavailable">{{ unavailableText() }}</span>
+        }
+        @if (option.value === value()) {
+          <span aria-hidden="true">✓</span>
+        }
+      </li>
+    }
+  </ul>
+}
+@if (unmatched()) {
+  <p class="select-feedback" [id]="id + '-feedback'" aria-live="polite">
+    {{ unmatchedValueText() }}
+  </p>
+}

@@ -1,0 +1,50 @@
+:host {
+  display: inline-block;
+}
+
+.badge {
+  align-items: center;
+  background: var(--cw-color-surface-subtle);
+  border: 1px solid var(--cw-color-border);
+  border-radius: var(--cw-badge-radius);
+  color: var(--cw-color-text-muted);
+  display: inline-flex;
+  font-family: var(--cw-font-body);
+  font-size: var(--cw-badge-font-size);
+  gap: var(--cw-badge-gap);
+  padding: var(--cw-badge-padding);
+}
+
+.dot {
+  background: var(--cw-color-text-muted);
+  border-radius: 50%;
+  flex: 0 0 auto;
+  height: var(--cw-badge-dot-size);
+  width: var(--cw-badge-dot-size);
+}
+
+.badge-ready .dot {
+  background: var(--cw-color-success);
+}
+
+.badge-processing .dot {
+  background: var(--cw-color-warning);
+}
+
+.badge-error .dot {
+  background: var(--cw-color-danger);
+}
+
+.badge-sm {
+  font-size: var(--cw-badge-font-size-small) !important;
+  padding: var(--cw-badge-padding-small) !important;
+}
+
+.badge-lg {
+  font-size: var(--cw-badge-font-size-large) !important;
+  padding: var(--cw-badge-padding-large) !important;
+}
+
+::ng-deep .engagement-row .badge {
+  margin-left: var(--cw-badge-inline-offset);
+}
